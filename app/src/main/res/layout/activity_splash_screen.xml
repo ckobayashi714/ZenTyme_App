@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreenActivity"
+    android:background="@color/SplashBackground"
+    >
+
+    <ImageView
+
+        android:id="@+id/iv_breif_case"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="105dp"
+        android:layout_marginRight="105dp"
+        android:layout_marginBottom="289dp"
+        android:src="@drawable/ic_baseline_work_24" />
+
+    <TextView
+        android:layout_width="148dp"
+        android:layout_height="51dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="119dp"
+        android:layout_marginRight="119dp"
+        android:fontFamily="sans-serif-black"
+        android:text="ZenTyme"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
