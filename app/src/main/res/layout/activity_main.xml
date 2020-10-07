@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome Lets Lock Yo Shit!"
+        android:text="Welcome\n Let's Lock Your Shit!"
         android:layout_marginTop="50dp"
         android:fontFamily="serif"
         android:textSize="30sp"
