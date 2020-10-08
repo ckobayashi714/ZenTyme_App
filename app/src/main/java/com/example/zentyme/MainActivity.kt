@@ -37,15 +37,37 @@ class MainActivity : AppCompatActivity() {
         val stop: Button = findViewById(R.id._off)
         val apps: List<ApplicationInfo> = list() //list() function returns a "List<ApplicationInfo>" data type.
         //variable "apps" is now supposed to have a list of packages
+        //=========================================================================================================
+        var name: TextView = findViewById(R.id.app_list)
+        val icons: Drawable
+        val image: ImageView = findViewById(R.id.app_icon)
 
-        //========================================================
+        val pkgm: PackageManager = this.packageManager
+
+        var counter: Int=0
+        var targetApp: String =""
+        for(i: ApplicationInfo in apps) {
+            val intent: Intent? = pkgm.getLaunchIntentForPackage(i.packageName)
+            if (intent != null) {
+                targetApp = i.packageName
+
+                name.text = i.loadLabel(packageManager).toString() //<------------------------------------------------------TARGET_NAME
+                icons = i.loadIcon(packageManager) // <-------------------------------------------------------TARGET_ICON
+
+                image.setImageDrawable(icons)
+
+                break
+            }
+            counter=counter+1
+        }
+        //================================================================================================================
 
         println("******************")
 
         start.setOnClickListener{
-            var target: String = apps[16].packageName   //<-----------------------------------------------------TARGET
+            // var target: String = apps[16].packageName   //<-----------------------------------------------------TARGET
             // lock(this, target)
-            lock2(this, target)
+            lock2(this, targetApp)
 
 
         }
@@ -71,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         //}
         var j: Int=0
         val a: ComponentName
-        var name: TextView = findViewById(R.id.app_list)
+        // var name: TextView = findViewById(R.id.app_list)
         println("size:::")
         println(s.size)
         for(i in s){
@@ -85,10 +107,10 @@ class MainActivity : AppCompatActivity() {
         }
         println("package info of s[0]")
         //val app1: ApplicationInfo = p.getApplicationInfo(s[0].packageName, PackageManager.GET_META_DATA)
-        name.text = s[16].loadLabel(packageManager).toString() //<------------------------------------------------------TARGET_NAME
-        val icons: Drawable = s[16].loadIcon(packageManager) // <-------------------------------------------------------TARGET_ICON
-        val image: ImageView = findViewById(R.id.app_icon)
-        image.setImageDrawable(icons)
+        // name.text = s[16].loadLabel(packageManager).toString() //<------------------------------------------------------TARGET_NAME
+        //  val icons: Drawable = s[16].loadIcon(packageManager) // <-------------------------------------------------------TARGET_ICON
+        // val image: ImageView = findViewById(R.id.app_icon)
+        // image.setImageDrawable(icons)
 
         return s
     }
@@ -233,3 +255,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
