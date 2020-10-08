@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#336699"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/app_list"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome\n Let's Lock Your Shit!"
-        android:layout_marginTop="50dp"
-        android:fontFamily="serif"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:background="#009999"
-        android:paddingBottom="30dp"
-        android:textColor="#FFFF"
+        android:layout_gravity="center_horizontal"
+        android:textSize="50sp"
+        android:text="" />
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        android:gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        />
+    <Button
+        android:id="@+id/_on"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="on"
+        />
+    <Button
+        android:id="@+id/_off"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="off"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
