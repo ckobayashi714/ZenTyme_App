@@ -11,17 +11,14 @@
     <ImageView
 
         android:id="@+id/iv_breif_case"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="307dp"
         android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:layout_marginEnd="105dp"
         android:layout_marginRight="105dp"
-        android:layout_marginBottom="289dp"
-        android:src="@drawable/logo" />
-
-
+        android:layout_marginBottom="219dp"
+        android:src="@drawable/zentyme3" />
 
 
 </RelativeLayout>
