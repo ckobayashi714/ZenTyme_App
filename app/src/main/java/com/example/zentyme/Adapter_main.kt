@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 open class Adapter
 
-class Adapter_main(var c: Context, var apps: MutableList<Apps>): RecyclerView.Adapter<Adapter_main.ViewHolder>() {
+class Adapter_main(var c: Context, var apps: MutableList<Apps>, var rv:RecyclerView): RecyclerView.Adapter<Adapter_main.ViewHolder>() {
 
     class ViewHolder : RecyclerView.ViewHolder {
         lateinit var name: TextView
@@ -26,10 +26,27 @@ class Adapter_main(var c: Context, var apps: MutableList<Apps>): RecyclerView.Ad
         }
 
     }
+    
+        var click: View.OnClickListener = object:View.OnClickListener{ 
+        override fun onClick(v: View) {
+            var i:Int = rv.getChildLayoutPosition(v);
+            println(i)
+            launch(i)
+        }
+    }
+    private fun launch(i:Int){
+        var p:PackageManager= c.packageManager
+        var intent: Intent? = p.getLaunchIntentForPackage(apps[i].pgkName)
+        if(intent!=null) {
+            c.startActivity(intent)
+        }
+    }
+    
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         var view: View = LayoutInflater.from(c).inflate(R.layout.adapter_row,parent,false)
         var orgnz: ViewHolder = ViewHolder(view)
+         view.setOnClickListener(click)
         return orgnz
     }
 
