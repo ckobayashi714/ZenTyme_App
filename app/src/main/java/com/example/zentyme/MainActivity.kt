@@ -64,21 +64,16 @@ class MainActivity : AppCompatActivity() {
         val p: PackageManager = getPackageManager()
         var s: List<ApplicationInfo> = p.getInstalledApplications(GET_META_DATA)
         println("getting apps...")
-        // val l: List<Apps> = arrayListOf<Apps>()
-        //var pInfo: ApplicationInfo
-        //for(pInfo in s){
-        //   var app: App = App(pInfo.packageName,p.getApplicationLabel(pInfo).toString())
-
-
-        //}
+   
         var j: Int=0
         for(i in s){
-            name = i.loadLabel(p).toString()
-            icon = i.loadIcon(p)
-            pkgName = i.packageName
-            println("loaded app info...")
-            list.add(Apps(name, icon, pkgName,0))
-
+            if((i.flags and ApplicationInfo.FLAG_SYSTEM) ==0) {
+                name = i.loadLabel(p).toString()
+                icon = i.loadIcon(p)
+                pkgName = i.packageName
+                println("loaded app info...")
+                list.add(Apps(name, icon, pkgName,0))
+            }
 
             println("===========================================================================")
             println(i.packageName)
