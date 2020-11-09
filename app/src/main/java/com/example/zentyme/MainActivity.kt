@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recycler_view)
         getApps()
         println("done with getApps()...")
-        adptr = Adapter_main(this, list)
+        adptr = Adapter_main(this, list,recyclerView)
         println("done creating Adapter...")
         recyclerView.setLayoutManager(LinearLayoutManager(this))
         println("done creating Linear Layout for recycleView...")
