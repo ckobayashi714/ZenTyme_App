@@ -3,6 +3,9 @@ package com.example.zentyme
 
 
 import android.app.ActivityManager
+import android.app.NotificationChannel
+import android.app.NotificationChannelGroup
+import android.app.NotificationManager
 import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.ComponentName
@@ -24,71 +27,41 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
+import java.util.Date.from
 
 
 class MainActivity : AppCompatActivity() {
-    @RequiresApi(Build.VERSION_CODES.P)
+    val CHANNEL_ID = "channel_id_example_101"
+    val notificationid = 101
 
-    lateinit var recyclerView: RecyclerView
-    var list: MutableList<Apps> = mutableListOf<Apps>()
-    var adptr: Adapter_main? = null
-
-    @RequiresApi(Build.VERSION_CODES.P)
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //=================Beginning the implementation
-        recyclerView = findViewById(R.id.recycler_view)
-        getApps()
-        println("done with getApps()...")
-        adptr = Adapter_main(this, list,recyclerView)
-        println("done creating Adapter...")
-        recyclerView.setLayoutManager(LinearLayoutManager(this))
-        println("done creating Linear Layout for recycleView...")
-
-        recyclerView.adapter = adptr
-        // recyclerView.setBackgroundColor(Color.rgb(207,207,207))
-        println("*************** RECYCLER_VIEW DESIGN: COMPLETE **********************")
-
-
-    }
-    @RequiresApi(Build.VERSION_CODES.P)
-    public fun getApps(){
-        var name: String
-        var icon: Drawable
-        var pkgName: String
-        val p: PackageManager = getPackageManager()
-        var s: List<ApplicationInfo> = p.getInstalledApplications(GET_META_DATA)
-        println("getting apps...")
-   
-        var j: Int=0
-        for(i in s){
-            if((i.flags and ApplicationInfo.FLAG_SYSTEM) ==0) {
-                name = i.loadLabel(p).toString()
-                icon = i.loadIcon(p)
-                pkgName = i.packageName
-                println("loaded app info...")
-                list.add(Apps(name, icon, pkgName,0))
-            }
-
-            println("===========================================================================")
-            println(i.packageName)
-            println(p.getApplicationLabel(i))
-            println(i)
+        val intent = Intent(this,MyService::class.java)
 
 
 
-        }
-        println("done loading into list...")
-        adptr?.notifyDataSetChanged()
+
+
+        val buttonStart = findViewById<Button>(R.id.StartService)
+
+
+
+        buttonStart.setOnClickListener { startService(intent) }
+
+
 
 
 
     }
+
 
 
 
