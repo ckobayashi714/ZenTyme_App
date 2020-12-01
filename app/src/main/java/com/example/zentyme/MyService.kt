@@ -1,11 +1,13 @@
 package com.example.zentyme
 
+import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.Service
 import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
@@ -53,16 +55,22 @@ class MyService : Service() {
 // trying to implement the app checker
 
 
+    @SuppressLint("WrongConstant")
     fun getForegroundApp(): String {
 
 
-        var activityManager = this.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        var processes1 = activityManager.getRunningTasks(1)
-        var componentInfo = processes1.get(0).topActivity
-        var classname = processes1.get(0).topActivity!!.getClassName()
-        var packagename = processes1.get(0).topActivity!!.getPackageName()
 
-        return packagename
+
+        val pm = this.getPackageManager()
+        val intent = Intent(Intent.ACTION_MAIN,null)
+        intent.addCategory(Intent.CATEGORY_LAUNCHER)
+
+        val list = pm.queryIntentActivities(intent, PackageManager.PERMISSION_GRANTED)
+
+        for(rInfo in list){
+            Log.w("List of Running Apps",rInfo.activityInfo.applicationInfo.loadLabel(pm).toString() )
+        }
+    return " "
     }
 
 }
