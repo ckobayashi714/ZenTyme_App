@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:id="@+id/action_settings"
+    android:title="@string/settings_name"
+    app:showAsAction="never"> //makes it so you have to click this to see what is in the 3 dots in the top right
+</item>
+</menu>

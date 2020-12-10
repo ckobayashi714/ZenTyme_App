@@ -19,11 +19,15 @@ import android.os.Build
 import android.provider.Settings
 import android.util.Log
 import android.util.Log.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
@@ -36,10 +40,23 @@ class MainActivity : AppCompatActivity() {
     var list: MutableList<Apps> = mutableListOf<Apps>()
     var adptr: Adapter_main? = null
 
+    //creates the 3 dots menu
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val menuInflater = getMenuInflater()
+        menuInflater.inflate(R.menu.menu, menu)//creates the options in the 3 dots menu
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
+    }
+
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setSupportActionBar(findViewById(R.id.actionbar)) //creates the actionbar found in res/layout/actionbar.xml
 
         //=================Beginning the implementation
         recyclerView = findViewById(R.id.recycler_view)
