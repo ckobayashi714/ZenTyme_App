@@ -38,7 +38,10 @@ class Adapter_main(var c: Context, var apps: MutableList<Apps>, var rv:RecyclerV
     }
     private fun launch(i:Int){
         var p:PackageManager= c.packageManager
-        var intent: Intent? = p.getLaunchIntentForPackage(apps[i].pgkName)
+        //var intent: Intent? = p.getLaunchIntentForPackage(apps[i].pgkName)
+        var intent: Intent = Intent()
+        intent.setClass(c, Apps_Page::class.java)
+        intent.putExtra("apps", apps[i].pgkName)
         if(intent!=null) {
             c.startActivity(intent)
         }
